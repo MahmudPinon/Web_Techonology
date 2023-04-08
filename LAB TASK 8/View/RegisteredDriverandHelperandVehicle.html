@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>  
+			window.onload = function() {
+        document.body.style.backgroundImage = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0HBw0HBwcNBw0HBwcHBw8IDQcNFREWFhURExMYHSggGBolGxMVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDw8PDysZFRkrKzctLSsrLS0rNzcrKy03LTc3KzctNzc3LTc3LTctLS03LSsrLTctLS03LS0tLTctLf/AABEIALYBFQMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQb/xAAVEAEBAAAAAAAAAAAAAAAAAAAAAf/EABcBAQEBAQAAAAAAAAAAAAAAAAABBQT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A2ADuYwAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAoAAAAAAAAAAAAAIACgAAAAAAAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAKICgAgAAAACggAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACoAAAAgAAAKAAAAAAAAAAAAAAAAAAAAAAAACoIKgKAKCAAAAAACoAAAAgAKAAAAAAAAgAKAAAAAAAIACgqAAACoAAAACAAoCoIAoAAAAAAAAAAAAAAAIAAAqKCoAAAAAACAAoAAqAAAAAAAAAAAAAAAACAAoAAACAqCgAgAKACAAAAAAAAAAoAAAAAAAAAAAAAAAIAAAAABAAAAQLQUoAgAAACgAoAAAAAgAKAAgAIAAAKj/9k=')";
+    }
+		function validateform(){  
+			  
+		var transportregnumber=document.myform.transportregnumber.value;  
+		var dname=document.myform.dname.value;  
+		var hname=document.myform.hname.value; 
+		var licensenumber=document.myform.licensenumber.value;
+        var ddob = document.getElementById("ddob");
+        var hdob = document.getElementById("hdob");
+		var dphonenumber=document.myform.dphonenumber.value;
+		var tername=document.myform.tername.value;
+		var image = document.getElementsByName("image");
+        document.write(ddob);
+          if (image[0].value == "") {
+             alert("Driver image can't be blank");
+             return false;
+          }
+		  if (dname==null || dname==""){  
+		    alert("Driver Name can't be blank");  
+		    return false;  
+		  }
+          if (hname==null || hname==""){  
+		    alert("Helper Name can't be blank");  
+		    return false;  
+		  }
+		  if (licensenumber!=null || licensenumber!=""){  
+            const pattern = /^([A-Z]{2}-[0-9]{4}-[0-9]{4})|([A-Z]{2}[0-9]{4}[0-9]{4})$/;
+            if(!pattern.test(licensenumber))
+              {
+                 alert("Invalid license number");  
+                 return false;
+              }  
+		  }
+
+          if(ddob.value === "")
+          {
+            alert("Invalid input");  
+                 return false;
+          }
+          if(hdob.value === "")
+          {
+            alert("Invalid input");  
+                 return false;
+          }
+
+          if ((dphonenumber!=null || dphonenumber!="") && dphonenumber==11){  
+            var phoneregex = /^(?:\+?88)?01[15-9]\d{8}$/;
+			if (!phoneregex.test(dphonenumber)) {
+				alert("Please enter a valid phone number.");
+				return false;
+			} 
+		  }
+          if (tername!=null || tername!=""){  
+            var phoneregex = /^[a-zA-Z]+$/;
+			if (!tername.test(tername)) {
+				alert("Please enter a valid Terminal Name.");
+				return false;
+			} 
+		  }
+
+        }
+		function checkTransReg() {
+			if (document.getElementById("transportregnumber").value == "") {
+			  	document.getElementById("transportregErr").innerHTML = "Vehicle Regestration Number can't be blank";
+			  	document.getElementById("transportregnumber").style.borderColor = "red";
+			}else{
+			  	document.getElementById("transportregErr").innerHTML = "";
+			  	document.getElementById("transportregnumber").style.borderColor = "black";
+
+			}			
+        }
+
+	function checkDName(){
+        if (document.getElementById("dname").value == "") {
+              document.getElementById("dnameErr").innerHTML = "Driver Name can't be blank";
+              document.getElementById("dname").style.borderColor = "red";
+        }else{
+            document.getElementById("dnameErr").innerHTML = "";
+              document.getElementById("dname").style.borderColor = "black";
+        }
+    }
+	function checkHName(){
+        if (document.getElementById("hname").value == "") {
+              document.getElementById("hnameErr").innerHTML = "Helper Name can't be blank";
+              document.getElementById("hname").style.borderColor = "red";
+        }else{
+            document.getElementById("hnameErr").innerHTML = "";
+              document.getElementById("hname").style.borderColor = "black";
+        }
+    }
+	function checkLnumber(){
+        if (document.getElementById("licensenumber").value == "") {
+              document.getElementById("licenseerr").innerHTML = "License Number can't be blank";
+              document.getElementById("licensenumber").style.borderColor = "red";
+        }else{
+            document.getElementById("licenseerr").innerHTML = "";
+              document.getElementById("licensenumber").style.borderColor = "black";
+        }
+    }
+    function checkDDob(){
+        if (document.getElementById("ddob").value == "") {
+              document.getElementById("driverdoberr").innerHTML = "Driver Date of Birth can't be blank";
+              document.getElementById("ddob").style.borderColor = "red";
+        }else{
+            document.getElementById("driverdoberr").innerHTML = "";
+              document.getElementById("ddob").style.borderColor = "black";
+        }
+    }
+	function checkHDob(){
+        if (document.getElementById("hdob").value == "") {
+              document.getElementById("helperdoberr").innerHTML = "Helper Date of Birth can't be blank";
+              document.getElementById("hdob").style.borderColor = "red";
+        }else{
+            document.getElementById("helperdoberr").innerHTML = "";
+              document.getElementById("hdob").style.borderColor = "black";
+        }
+    }
+    function checkDphn(){
+        if (document.getElementById("dphonenumber").value == "") {
+              document.getElementById("driverphnErr").innerHTML = "Driver Phone Number can't be blank";
+              document.getElementById("dphonenumber").style.borderColor = "red";
+        }else{
+            document.getElementById("driverphnErr").innerHTML = "";
+              document.getElementById("dphonenumber").style.borderColor = "black";
+        }
+    }
+	function checkterminalname(){
+        if (document.getElementById("tername").value == "") {
+              document.getElementById("Terminalnameerr").innerHTML = "Terminal Name can't be blank";
+              document.getElementById("tername").style.borderColor = "red";
+        }else{
+            document.getElementById("Terminalnameerr").innerHTML = "";
+              document.getElementById("tername").style.borderColor = "black";
+        }
+    }
+	function checkimage(){
+        var fileInput = document.getElementById('image');
+        var imageError = document.getElementById('imageerr');
+        if (fileInput.files.length == 0) {
+        imageError.innerHTML = "Driver image can't be blank";
+        fileInput.style.borderColor = "red";
+        } else 
+        {
+        imageError.innerHTML = "";
+        fileInput.style.borderColor = "black";
+        }
+    }
+</script>  
+</head>
+<title>Registration form</title> 
+<style>
+    fieldset {
+        border: 1px solid rgb(255, 232, 57);
+        width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+  
+    input[type="text"],
+    input[type="password"],
+	input[type="number"],
+    input[type="email"] {
+        width: 100%;
+        padding: 1px;
+        margin-bottom: 7px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #transportregErr,
+    #dnameErr,
+	#hnameErr,
+	#licenseerr,
+	#driverdoberr,
+	#helperdoberr,
+	#driverphnErr,
+	#Terminalnameerr,
+    #imageerr {
+        color: red;
+    }
+	legend {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<br />
+<div>  
+	<fieldset >
+	  <legend><b>Registration</legend>                
+	  <center><form name="myform" method="post" action="../Controller/CreateRegisteredUser.php" onsubmit="return validateform()" > 
+Transport Registration Number: <input type="text" id="transportregnumber" name="transportregnumber" placeholder="Enter Register Number" onblur="checkTransReg()">
+<p id="transportregErr"></p>			
+Driver Name: <input type="text" name="dname" id="dname" placeholder="Enter Driver Name" onblur="checkDName()" onkeyup="checkDName()">
+<p id="dnameErr"></p>  
+Helper Name: <input type="text" name="hname" id="hname" placeholder="Enter Helper Name" onblur="checkHName()" onkeyup="checkHName()">
+<p id="hnameErr"></p>  
+Driver License Number: <input type="text" id="licensenumber" name="licensenumber" placeholder="Enter License Number" onblur="checkLnumber()">
+<p id="licenseerr"></p> 
+Driver Date of Birth: <input type="date" id="ddob" name="ddob" onblur="checkDDob()">
+<p id="driverdoberr"></p>
+Helper Date of Birth: <input type="date" id="hdob" name="hdob" onblur="checkHDob()">
+<p id="helperdoberr"></p>
+Driver Phone Number: <input type="number" id="dphonenumber" name="dphonenumber" onblur="checkDphn()">
+<p id="driverphnErr"></p>
+Terminal Name: <input type="text" id="tername" name="tername" placeholder="Terminal Name" onblur="checkterminalname()">
+<p id="Terminalnameerr"></p>
+Driver Image: <input type="file" id="image" name="image" onblur="checkimage()">
+<p id="imageerr"></p>
+<input type="submit" value="Register"></br>
+<a href="Home.html">Home</a>  
+</form>  </center>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>  
+			window.onload = function() {
+        document.body.style.backgroundImage = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0HBw0HBwcNBw0HBwcHBw8IDQcNFREWFhURExMYHSggGBolGxMVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDw8PDysZFRkrKzctLSsrLS0rNzcrKy03LTc3KzctNzc3LTc3LTctLS03LSsrLTctLS03LS0tLTctLf/AABEIALYBFQMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQb/xAAVEAEBAAAAAAAAAAAAAAAAAAAAAf/EABcBAQEBAQAAAAAAAAAAAAAAAAABBQT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A2ADuYwAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAoAAAAAAAAAAAAAIACgAAAAAAAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAKICgAgAAAACggAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACoAAAAgAAAKAAAAAAAAAAAAAAAAAAAAAAAACoIKgKAKCAAAAAACoAAAAgAKAAAAAAAAgAKAAAAAAAIACgqAAACoAAAACAAoCoIAoAAAAAAAAAAAAAAAIAAAqKCoAAAAAACAAoAAqAAAAAAAAAAAAAAAACAAoAAACAqCgAgAKACAAAAAAAAAAoAAAAAAAAAAAAAAAIAAAAABAAAAQLQUoAgAAACgAoAAAAAgAKAAgAIAAAKj/9k=')";
+    }
+		function validateform(){  
+			  
+		var productid=document.myform.productid.value;  
+		var rentammount=document.myform.rentammount.value;  
+        var vehicleregnumber=document.myform.vehicleregnumber.value; 
+        if (productid==null || productid==""){  
+		    alert("Product Id can't be blank");  
+		    return false;  
+		  } 
+        if (rentammount==null || rentammount==""){  
+		    alert("Rent Ammount can't be blank");  
+		    return false;  
+		  }
+        if (vehicleregnumber==null || vehicleregnumber==""){  
+		    alert("Vehicle Registration can't be blank");  
+		    return false;  
+		  }     
+
+        }
+    function checkProduct(){
+        if (document.getElementById("productid").value == "") {
+              document.getElementById("productiderr").innerHTML = "Product Id can not be blank";
+              document.getElementById("productid").style.borderColor = "red";
+        }else{
+            document.getElementById("productiderr").innerHTML = "";
+              document.getElementById("productid").style.borderColor = "black";
+        }
+    }
+    function checkRentAm(){
+        if (document.getElementById("rentammount").value == "") {
+              document.getElementById("rentammounterr").innerHTML = "Rent Ammount can not be blank";
+              document.getElementById("rentammount").style.borderColor = "red";
+        }else{
+            document.getElementById("rentammounterr").innerHTML = "";
+              document.getElementById("rentammount").style.borderColor = "black";
+        }
+    }
+    function checkTransReg(){
+        if (document.getElementById("vehicleregnumber").value == "") {
+              document.getElementById("vahicleregerr").innerHTML = "Vehicle Registration Number can not be blank";
+              document.getElementById("vehicleregnumber").style.borderColor = "red";
+        }else{
+            document.getElementById("vahicleregerr").innerHTML = "";
+              document.getElementById("vehicleregnumber").style.borderColor = "black";
+        }
+    }
+
+</script>  
+</head>
+<title>Registration form</title> 
+<style>
+    fieldset {
+        border: 1px solid rgb(255, 232, 57);
+        width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+  
+    input[type="text"],
+    input[type="password"],
+	input[type="number"],
+    input[type="email"] {
+        width: 100%;
+        padding: 1px;
+        margin-bottom: 7px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #rentammounterr,
+    #productiderr,
+	#vahicleregerr{
+        color: red;
+    }
+	legend {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<br />
+<div>  
+	<fieldset >
+	  <legend><b>Registration</legend>                
+	  <center><form name="myform" method="post" action="../Controller/CreateRegisteredUser.php" onsubmit="return validateform()" > 
+Product Id: <input type="text" id="productid" name="productid" placeholder="Enter Product Id" onblur="checkProduct()">
+<p id="productiderr"></p>			
+Rent Ammount: <input type="number" id="rentammount" name="rentammount" placeholder="Enter Rent Ammount" onblur="checkRentAm()">
+<p id="rentammounterr"></p> 
+Vehicle Registration Number: <input type="text" id="vehicleregnumber" name="vehicleregnumber" placeholder="Enter Vehicle Registration Number" onblur="checkTransReg()">
+<p id="vahicleregerr"></p> 
+<input type="submit" value="Register"></br>
+<a href="Home.html">Home</a>  
+</form>  </center>
+</body>
+</html>

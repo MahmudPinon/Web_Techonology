@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>  
+
+
+   
+
+		function checkUName(){
+        if (document.getElementById("username").value == "") {
+              document.getElementById("UsernErr").innerHTML = "Username can't be blank";
+              document.getElementById("username").style.borderColor = "red";
+        }else{
+            document.getElementById("unameErr").innerHTML = "";
+              document.getElementById("UsernErr").style.borderColor = "black";
+        }
+    }
+    function checkPass(){
+        	if (document.getElementById("password").value == "") {
+			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("password").style.borderColor = "red";
+			}else{
+				document.getElementById("passErr").innerHTML = "";
+			  	document.getElementById("password").style.borderColor = "black";
+			}
+        }
+</script>  
+</head>
+<title>Login form</title> 
+<style>
+    legend {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    fieldset {
+  border: 1px solid rgb(39, 39, 36);
+  width: 400px;
+  margin: 0 auto; /* add this line */
+  margin-top: 100px; /* add this line to add some top margin */
+}
+
+
+    label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/1002/609/152/blue-blur-abstract-simple-background-wallpaper-preview.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  margin-right: 40px; /* adjust the value as per your preference */
+  margin-left: 30px;
+}
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 1px;
+        margin-bottom: 7px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #passErr,
+    #UsernErr{
+        color: red;
+    }
+
+    legend {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <br />
+    <div>  
+        <fieldset>
+            <legend><b>Log In</b></legend>                
+            <center>
+                <form name="myform" method="post" action="" onsubmit="return validateform()"> 
+                    UserName: <input type="text" id="username" name="username" placeholder="Enter UserName" onblur="checkUName()" required>
+                    <p id="UsernErr"></p> 
+                    Password: <input type="password" id="password" name="password" placeholder="Enter Password" onblur="checkPass()"  required>
+                    <p id="passErr"></p>
+                    <input type="submit" value="register"></br>
+                    <a href="Registration.html">Don't Have Account?</a>  
+                    <a href="TOForgetPass.html">Forget Password?</a>
+                </form>  
+            </center>
+        </fieldset>
+    </div>
+</body>
+</html>

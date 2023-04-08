@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Web Page</h2>
+<p>My First Paragraph.</p>
+
+<center>
+  <form name="myform" method="post" action="" onsubmit="return validateForm()">
+    Driver Date of Birth: <input type="date" id="ddob" name="ddob" onblur="checkDDob()">
+    <p id="driverdoberr"></p>
+    Helper Date of Birth: <input type="date" id="hdob" name="hdob" onblur="checkHDob()">
+    <p id="helperdoberr"></p>
+
+    <input type="submit" value="Register"></br>
+    <a href="Home.html">Home</a>  
+  </form>
+</center>
+
+<script>
+  function validateForm() {
+    var driverDob = document.getElementById("ddob").value;
+    var helperDob = document.getElementById("hdob").value;
+
+    // Basic validation - check that both fields are not empty
+    if (driverDob == "" || helperDob == "") {
+      alert("Please enter both dates of birth.");
+      return false;
+    }
+
+    // Other validation rules can be added here
+
+    return true;
+  }
+
+  function checkDDob() {
+  var driverDob = document.getElementById("ddob").value;
+  var hdob = document.getElementById("hdob").value;
+
+  if (driverDob == "") {
+    document.getElementById("driverdoberr").innerHTML = "Please enter a date of birth.";
+  } else {
+             const birthDate = new Date(driverDob);
+            const ageInMs = Date.now() - birthDate.getTime();
+            const ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
+            alert(ageInYears);
+    
+  }
+}
+
+
+//   function checkHDob() {
+//     var helperDob = document.getElementById("hdob").value;
+
+//     // Basic validation - check that the field is not empty
+//     if (helperDob == "") {
+//       document.getElementById("helperdoberr").innerHTML = "Please enter a date of birth.";
+//     } else {
+//       alert(helperDob);
+//     }
+//   }
+</script>
+
+</body>
+</html>

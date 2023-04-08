@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>  
+			window.onload = function() {
+        document.body.style.backgroundImage = "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0HBw0HBwcNBw0HBwcHBw8IDQcNFREWFhURExMYHSggGBolGxMVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDw8PDysZFRkrKzctLSsrLS0rNzcrKy03LTc3KzctNzc3LTc3LTctLS03LSsrLTctLS03LS0tLTctLf/AABEIALYBFQMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQb/xAAVEAEBAAAAAAAAAAAAAAAAAAAAAf/EABcBAQEBAQAAAAAAAAAAAAAAAAABBQT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A2ADuYwAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAoAAAAAAAAAAAAAIACgAAAAAAAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAKICgAgAAAACggAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACoAAAAgAAAKAAAAAAAAAAAAAAAAAAAAAAAACoIKgKAKCAAAAAACoAAAAgAKAAAAAAAAgAKAAAAAAAIACgqAAACoAAAACAAoCoIAoAAAAAAAAAAAAAAAIAAAqKCoAAAAAACAAoAAqAAAAAAAAAAAAAAAACAAoAAACAqCgAgAKACAAAAAAAAAAoAAAAAAAAAAAAAAAIAAAAABAAAAQLQUoAgAAACgAoAAAAAgAKAAgAIAAAKj/9k=')";
+    }
+		function validateform(){  
+			  
+		var name=document.myform.name.value;  
+		var password=document.myform.password.value;  
+		var email=document.myform.email.value; 
+		var username=document.myform.username.value; 
+		var currpassword=document.myform.conpassword.value;
+		var binnumber=document.myform.binnumber.value;
+		var phonenumber=document.myform.phnnumber.value;
+		var address=document.myform.address.value;
+		var radios = document.getElementsByName("usertype");
+        var dob = document.getElementById("dob");
+        var checked = false;
+        
+		         for (var i = 0; i < radios.length; i++) 
+				 {
+                 if (radios[i].checked)
+				    {
+                    checked = true;
+                    break;
+                    }
+                }
+        if(dob.value==="" && dob.value===null)
+        {
+            alert("Date of Birth Can not be Empty");  
+		    return false;
+        }
+		if (name==null || name==""){  
+		  alert("Name can't be blank");  
+		  return false;  
+		}
+		if (address==null || address==""){  
+		  alert("Address can't be blank");  
+		  return false;  
+		}
+		  if(password.length<8)
+		  {  
+		      alert("Password must be at least 8 characters long.");  
+		      return false;  
+		  }  
+		  if(email.length>0)
+          {
+             const pattern= /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+             if(!pattern.test(email))
+              {
+                 alert("Invalid email address");  
+                 return false;
+              }
+          }  
+		  if(password.length>=8)
+          {
+               const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]){8,}\S+$/;
+               if(!pattern.test(password))
+                 {
+                   alert("Weak and Invalid Password");  
+                   return false; 
+                 }
+          }
+		  if(username.length>0)
+          {
+			
+			const regex = /^[a-zA-Z0-9_-]{5,16}$/;
+                if(!regex.test(username))
+                {
+                    alert("Invalid username and Username must be between 5 to 16 character");  
+                    return false; 
+                }
+        
+          }
+		if(currpassword.length<8)
+         {
+               alert("Confirm Password and Password didn't match");  
+               return false; 
+         }
+        if(currpassword.length>=8 && password.length>=8)
+         {
+            if(currpassword !=password)
+            {
+               alert("Confirm Password and Password didn't match");  
+               return false; 
+            }       
+         }
+		 if(binnumber.length!=12)
+         {
+            
+               alert("BIN number Must be 12 digit");  
+               return false; 
+               
+         }
+		 if(phonenumber.length!=11)
+         {
+            
+               alert("Phone Number Must be 11 digit");  
+               return false; 
+               
+         }
+		 if(phonenumber.length===11)
+         {
+            var phoneregex = /^(?:\+?88)?01[15-9]\d{8}$/;
+			if (!phoneregex.test(phonenumber)) {
+				alert("Please enter a valid phone number.");
+				return false;
+			}
+               
+         }
+		 if (binnumber.charAt(0) === "0")
+		 {
+			   alert("BIN number 1st digit can not be 0");  
+               return false; 
+		 }
+		 if (!checked)
+		    {
+                alert("Please select a user type.");
+                return false; 
+            }
+		}
+		function checkName() {
+			if (document.getElementById("name").value == "") {
+			  	document.getElementById("nameErr").innerHTML = "Name can't be blank";
+			  	document.getElementById("name").style.borderColor = "red";
+			}else{
+			  	document.getElementById("nameErr").innerHTML = "";
+			  	document.getElementById("name").style.borderColor = "black";
+
+			}
+			
+        }
+
+        function checkPass(){
+        	if (document.getElementById("password").value == "") {
+			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("password").style.borderColor = "red";
+			}else{
+				document.getElementById("passErr").innerHTML = "";
+			  	document.getElementById("password").style.borderColor = "black";
+			}
+        }
+		function checkEmail(){
+        if (document.getElementById("email").value == "") {
+              document.getElementById("EmailErr").innerHTML = "Email can't be blank";
+              document.getElementById("email").style.borderColor = "red";
+        }else{
+            document.getElementById("EmailErr").innerHTML = "";
+              document.getElementById("email").style.borderColor = "black";
+        }
+    }
+	function checkUName(){
+        if (document.getElementById("username").value == "") {
+              document.getElementById("UsernErr").innerHTML = "Username can't be blank";
+              document.getElementById("username").style.borderColor = "red";
+        }else{
+            document.getElementById("unameErr").innerHTML = "";
+              document.getElementById("UsernErr").style.borderColor = "black";
+        }
+    }
+	function checkCpass(){
+        if (document.getElementById("conpassword").value == "") {
+              document.getElementById("CpassErr").innerHTML = "Password and Confirm Password can't be blank";
+              document.getElementById("conpassword").style.borderColor = "red";
+        }else{
+            document.getElementById("CpassErr").innerHTML = "";
+              document.getElementById("conpassword").style.borderColor = "black";
+        }
+    }
+	function checkBin(){
+        if (document.getElementById("binnumber").value == "") {
+              document.getElementById("BinErr").innerHTML = "Bin Number can't be blank";
+              document.getElementById("binnumber").style.borderColor = "red";
+        }else{
+            document.getElementById("BinErr").innerHTML = "";
+              document.getElementById("binnumber").style.borderColor = "black";
+        }
+    }
+	function checkDob(){
+        if (document.getElementById("dob").value == "") {
+              document.getElementById("DobErr").innerHTML = "Date of Birth can't be blank";
+              document.getElementById("dob").style.borderColor = "red";
+        }else{
+            document.getElementById("DobErr").innerHTML = "";
+              document.getElementById("dob").style.borderColor = "black";
+        }
+    }
+	function checkPhoneNumber(){
+        if (document.getElementById("phnnumber").value == "") {
+              document.getElementById("PhoneNumberErr").innerHTML = "Phone Number can't be blank";
+              document.getElementById("phnnumber").style.borderColor = "red";
+        }else{
+            document.getElementById("PhoneNumberErr").innerHTML = "";
+              document.getElementById("phnnumber").style.borderColor = "black";
+        }
+    }
+	function checkAddress(){
+        if (document.getElementById("address").value == "") {
+              document.getElementById("AddressErr").innerHTML = "Address can't be blank";
+              document.getElementById("address").style.borderColor = "red";
+        }else{
+            document.getElementById("AddressErr").innerHTML = "";
+              document.getElementById("address").style.borderColor = "black";
+        }
+    }
+</script>  
+</head>
+<title>Registration form</title> 
+<style>
+    fieldset {
+        border: 1px solid rgb(255, 232, 57);
+        width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+  
+    input[type="text"],
+    input[type="password"],
+	input[type="number"],
+    input[type="email"] {
+        width: 100%;
+        padding: 1px;
+        margin-bottom: 7px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #nameErr,
+    #passErr,
+	#UsernErr,
+	#BinErr,
+	#DobErr,
+	#CpassErr,
+	#PhoneNumberErr,
+	#AddressErr,
+    #EmailErr {
+        color: red;
+    }
+	legend {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<br />
+<div>  
+	<fieldset >
+	  <legend><b>Registration</legend>                
+	  <center><form name="myform" method="post" action="../Controller/CreateRegisteredUser.php" onsubmit="return validateform()" > 
+			
+Name: <input type="text" name="name" id="name" placeholder="Enter Name" onblur="checkName()" onkeyup="checkName()">
+<p id="nameErr"></p>  
+Email: <input type="text" id="email" name="email" placeholder="Enter Email" onblur="checkEmail()">
+<p id="EmailErr"></p> 
+UserName: <input type="text" id="username" name="username" placeholder="Enter UserName" onblur="checkUName()">
+<p id="UsernErr"></p> 
+Password: <input type="password" id="password" name="password" placeholder="Enter Password" onblur="checkPass()">
+<p id="passErr"></p>
+Confirm Password: <input type="password" id="conpassword" name="conpassword" placeholder="Confirm Password" onblur="checkCpass()">
+<p id="CpassErr"></p>
+BIN Certificate Number: <input type="number" id="binnumber" name="binnumber" placeholder="BIN Number" onblur="checkBin()">
+<p id="BinErr"></p>
+Date of Birth: <input type="date" id="dob" name="dob" onblur="checkDob()">
+<p id="DobErr"></p>
+<fieldset>
+	<legend>User Type</legend>
+	<label><input type="radio" id="transportowner" name="usertype" value="transportowner"> Transport Owner</label>
+	<label><input type="radio" id="terminalowner" name="usertype" value="terminalowner"> Terminal Owner</label></br>
+	<label><input type="radio" id="exporterimporter" name="usertype" value="exporterimporter"> Exporter/Importer</label>
+</fieldset>
+Phone Number: <input type="number" id="phnnumber" name="phnnumber" placeholder="Enter Phone Number" onblur="checkPhoneNumber()">
+<p id="PhoneNumberErr"></p>
+Address: <input type="text" id="address" name="address" placeholder="Enter Address" onblur="checkAddress()">
+<p id="AddressErr"></p>
+<input type="submit" value="Register"></br>
+<a href="Login.html">Already Have an Account?</a>  
+</form>  </center>
+</body>
+</html>
